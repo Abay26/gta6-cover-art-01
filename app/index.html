@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <header class="brand">
+      <h1>Neon Coast <span>Cover Studio</span></h1>
+      <p>Your photo, your caption — a Vice City-style multi-panel cover, offline, in seconds.</p>
+    </header>
+
+    <fieldset class="group">
+      <legend>1 · Photos</legend>
+      <label class="upload">Add your photos
+        <input id="upload" type="file" accept="image/*" multiple>
+      </label>
+      <div id="tray" class="tray" aria-label="Loaded photos"></div>
+      <div class="row">
+        <button id="fillAll" type="button">Fill all panels</button>
+        <button id="shuffle" type="button">Shuffle photos</button>
+      </div>
+      <p class="hint">Click a panel in the preview, then click a photo to put it there. Drag the photo to move it.</p>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>2 · Layout &amp; grade</legend>
+      <div id="layouts" class="chips" role="group" aria-label="Layout"></div>
+      <div id="grades" class="chips" role="group" aria-label="Colour grade"></div>
+      <label class="slider">Zoom selected panel
+        <input id="zoom" type="range" min="1" max="3" step="0.05" value="1">
+      </label>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>3 · Caption</legend>
+      <label>Title
+        <input id="title" type="text" maxlength="24" value="NEON COAST">
+      </label>
+      <label>Subtitle
+        <input id="subtitle" type="text" maxlength="40" value="Vice City nights">
+      </label>
+      <label>Badge
+        <input id="badge" type="text" maxlength="30" value="EST. 2026">
+      </label>
+      <div id="titleStyles" class="chips" role="group" aria-label="Title style"></div>
+    </fieldset>
+
+    <fieldset class="group">
+      <legend>4 · Export</legend>
+      <div id="sizes" class="chips" role="group" aria-label="Export size"></div>
+      <button id="exportOne" class="primary" type="button">Export this size as PNG</button>
+      <button id="exportAll" class="primary alt" type="button">Export all 3 sizes</button>
+      <div class="row">
+        <button id="undo" type="button">Undo</button>
+        <button id="redo" type="button">Redo</button>
+        <button id="reset" type="button">Reset</button>
+      </div>
+      <p id="status" role="status"></p>
+    </fieldset>
+  </section>
+
+  <section class="stage">
+    <div class="canvasWrap">
+      <canvas id="cover" width="1080" height="1080" aria-label="Cover preview"></canvas>
+      <div id="panelTag" class="panelTag" hidden>Panel 1</div>
+    </div>
+    <p class="stageHint">Click a panel to select it · drag to reposition the photo · scroll the zoom slider to crop tighter.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
